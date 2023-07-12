@@ -17,12 +17,21 @@ fn main() {
             .split(' ')
             .flat_map(str::parse::<String>)
             .collect::<Vec<_>>();
+       if(args.len()==1){
+        match args[0].as_str(){
+            "exit"=>{break;},
+            &_=>{
+
+            }
+        }
+       }
         if args.len() != 2 {
             println!("Expects 2 arguments");
             continue;
         }
 
         match args[0].as_str() {
+            
             "add" => {
                 data.push(args[1].clone());
             }
@@ -36,11 +45,13 @@ fn main() {
                     if !file::search_file() {
                         println!("Local file doesn't exist");
                     }
+                    else {
                     {
                         println!("*************");
                         file::show_data();
                         println!("*************");
                     }
+                }
                 }
                 &_ => {
                     continue;
